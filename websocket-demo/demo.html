@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>websocket demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  <script src="main.js"></script>
+</head>
+
+<body>
+  <input type="text" class="input" />
+  <button class='send'>发送</button>
+  <div class="text"></div>
+</body>
+
+</html>
+
+
+
+<script>
+  function query(dom) {
+    const obj = document.querySelectorAll(dom);
+    return obj.length > 1 ? obj : obj[0];
+  }
+
+  function bindEvent(obj, event, callback) {
+    obj.addEventListener(event, callback);
+  }
+  const websocket = new WebSocket('ws://localhost:1999');
+  bindEvent(websocket, 'open', () => {
+    query('.text').innerHTML = '已连接';
+  })
+  bindEvent(websocket, 'close', () => {
+    console.log('已断开');
+  })
+  bindEvent(websocket, 'message', msg => {
+    query('.text').innerHTML = msg.data;
+  })
+  bindEvent(query('.send'), 'click', () => {
+    websocket.send(query('.input').value);
+  })
+</script>
