@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>websocket demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="../../js/socket.io.js"></script>
+</head>
+
+<body>
+  <input type="text" class="input" />
+  <button class='send'>发送</button>
+  <div class="message-box"></div>
+</body>
+
+</html>
+<script>
+  const socket = io('ws://localhost:1999');
+  socket.on('enter', msg => {
+    showMessage(msg, 'enter');
+  });
+  socket.on('leave', msg => {
+    showMessage(msg, 'leave');
+  });
+  socket.on('message', msg => {
+    showMessage(msg);
+  });
+  bindEvent(window, 'keyup', (ev) => {
+    if (ev.keyCode === 13) {
+      socket.emit('message', query('.input').value);
+      query('.input').value = '';
+    }
+  })
+
+  function showMessage(msg, type) {
+    let msgContainer = document.createElement('p');
+    msgContainer.innerHTML = msg;
+    if (type === 'enter') {
+      msgContainer.style.color = 'green';
+    } else if (type === 'leave') {
+      msgContainer.style.color = 'red';
+    }
+    query('.message-box').appendChild(msgContainer);
+  }
+
+  function query(dom) {
+    const obj = document.querySelectorAll(dom);
+    return obj.length > 1 ? obj : obj[0];
+  }
+
+  function bindEvent(obj, event, callback) {
+    obj.addEventListener(event, callback);
+  }
+</script>
