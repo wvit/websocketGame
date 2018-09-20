@@ -13,7 +13,7 @@
 <body>
   <input type="text" class="input" />
   <button class='send'>发送</button>
-  <div class="text"></div>
+  <div class="message-box"></div>
 </body>
 
 </html>
@@ -31,15 +31,29 @@
   }
   const websocket = new WebSocket('ws://localhost:1999');
   bindEvent(websocket, 'open', () => {
-    query('.text').innerHTML = '已连接';
+    bindEvent(window, 'keyup', (ev) => {
+      if (ev.keyCode === 13) {
+        websocket.send(query('.input').value);
+        query('.input').value = '';
+      }
+    })
   })
   bindEvent(websocket, 'close', () => {
     console.log('已断开');
   })
   bindEvent(websocket, 'message', msg => {
-    query('.text').innerHTML = msg.data;
+    msg = JSON.parse(msg.data);
+    showMessage(msg);
   })
-  bindEvent(query('.send'), 'click', () => {
-    websocket.send(query('.input').value);
-  })
+
+  function showMessage(msg) {
+    let msgContainer = document.createElement('p');
+    msgContainer.innerHTML = msg.data;
+    if (msg.type === 'enter') {
+      msgContainer.style.color = 'green';
+    } else if (msg.type === 'out') {
+      msgContainer.style.color = 'red';
+    }
+    query('.message-box').appendChild(msgContainer);
+  }
 </script>
