@@ -1,5 +1,5 @@
 const ws = require('nodejs-websocket');
-const server = ws.createServer((connect) => {
+const server = ws.createServer(connect => {
   console.log('创建成功');
   connect.on('text', str => {
     console.log('send :' + str);
