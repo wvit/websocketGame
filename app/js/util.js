@@ -13,12 +13,3 @@ function bindEvent(obj, event, callback) {
     });
 }
 //////////////////////////////////////////////////////
-//3,隐藏节点/显示节点
-function hideObj(dom) {
-    dom.style.display = 'none';
-}
-
-function showObj(dom) {
-    dom.style.display = 'block';
-}
-////////////////////////////////////////////////////
