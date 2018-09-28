@@ -11,6 +11,6 @@ io.on('connection', socket => {
     io.emit('message', socket.nickname + ' : ' + str);
   });
   socket.on('disconnect', () => {
-    io.emit('leave', socket.nickname + '离开聊天')
+    io.emit('leave', socket.nickname + '离开聊天');
   });
-})
+});
