@@ -61,7 +61,7 @@ const nextTypeThree = [
 ]
 
 //方块可变化的形态（多种方块，每种有多个形态）
-let nextTypes = [nextTypeOne, nextTypeTwo, nextTypeThree]
+const nextTypes = [nextTypeOne, nextTypeTwo, nextTypeThree]
 
 //当前下落方块的形态
 let nextData = [

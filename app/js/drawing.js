@@ -50,7 +50,7 @@ function gameMove(posiX, posiY) {
   }
 }
 
-//清除游戏区
+//刷新游戏区
 function clearGame() {
   for (let i = 0; i < gameDivs.length; i++) {
     for (let j = 0; j < gameDivs[0].length; j++) {
