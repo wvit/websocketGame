@@ -21,7 +21,6 @@ function repaint(rowIndex) {
     for (let i = 0; i < gameDivs[rowIndex].length; i++) {
         gameDivs[rowIndex][i].className = 'none'
     }
-    recoverData(gameData, gameDivs);
     gameData.splice(rowIndex, 1);
     gameData.unshift(rowNull);
     drawing(gameData, gameDivs);

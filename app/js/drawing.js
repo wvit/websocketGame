@@ -78,4 +78,6 @@ function clearGame() {
       }
     }
   }
+  recoverData(gameData, gameDivs);
+  socket.emit('message', gameData);
 }
