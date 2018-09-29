@@ -1,71 +1,41 @@
-init(gameData, gameDivs, '.game');
-init(nextData, nextDivs, '.next');
-drawing(gameData, gameDivs);
-drawing(nextData, nextDivs);
-
-//初始化界面游戏数据
-function init(arr1, arr2, dom) {
-    let wrap = query(dom);
-    let wrapChild = document.createElement('div');
-    for (let i = 0; i < arr1.length; i++) {
-        let divRow = [];
-        for (let j = 0; j < arr1[i].length; j++) {
-            let div = document.createElement('div');
-            div.className = 'none';
-            div.style.cssText = `top:${i*20}px;left:${j*20}px`;
-            wrapChild.appendChild(div);
-            divRow.push(div);
-        }
-        arr2.push(divRow);
-    }
-    wrap.appendChild(wrapChild);
-}
-
-//绘制游戏区界面
-function drawing(arr1, arr2) {
-    for (let i = 0; i < arr1.length; i++) {
-        for (let j = 0; j < arr1[0].length; j++) {
-            if (arr1[i][j] === 0) {
-                arr2[i][j].className = 'none';
-            } else if (arr1[i][j] === 1) {
-                arr2[i][j].className = 'done';
-            } else if (arr1[i][j] === 2) {
-                arr2[i][j].className = 'current';
-            }
-        }
-    }
-}
-
-//把方块放入游戏区
-function gameMove(posiX, posiY) {
-    for (let i = posiX; i < nextData.length + posiX; i++) {
-        for (let j = posiY; j < nextData[0].length + posiY; j++) {
-            if (nextData[j - posiY][i - posiX] === 2) {
-                if (gameDivs[j] && gameDivs[j][i]) {
-                    gameDivs[j][i].className = 'current';
+//判断是否在游戏区范围内(主要用来判断是否可以进行下一步操作)
+function judgeRange(posiX, posiY, arr = nextData) {
+    for (let i = posiX; i < arr.length + posiX; i++) {
+        for (let j = posiY; j < arr[0].length + posiY; j++) {
+            if (arr[j - posiY][i - posiX] === 2) {
+                if (!gameDivs[j] || !gameDivs[j][i]) {
+                    return true;
+                }
+                if (gameDivs[j][i].className === 'done') {
+                    return true;
                 }
             }
         }
     }
 }
 
-//绑定鼠标操作事件
-bindEvent(document, 'keyup', ev => {
-    ev.keyCode === 37 ? userOneX-- : userOneX;
-    ev.keyCode === 39 ? userOneX++ : userOneX;
-    if (ev.keyCode === 39 || ev.keyCode === 37) {
-        clearGame();
-        gameMove(userOneX, userOneY);
+//方块自由下落
+let downTimer = setInterval(() => {
+    if (!judgeRange(userOneX, userOneY)) {
+        gameMove(userOneX, userOneY++);
     }
-})
+    if (judgeRange(userOneX, userOneY)) {
+        console.log('下落完成');
+        downFinish();
+    }
+}, 1000)
 
-//清除游戏区
-function clearGame() {
+//下落完成,方块变色和刷新方块
+function downFinish() {
     for (let i = 0; i < gameDivs.length; i++) {
         for (let j = 0; j < gameDivs[0].length; j++) {
             if (gameDivs[i][j].className === 'current') {
-                gameDivs[i][j].className = 'none';
+                gameDivs[i][j].className = 'done';
             }
         }
     }
+    userOneX = randomNum(gameData[0].length);
+    userOneY = 0;
+    createBlock.resetTypeIndex();
+    createBlock.selectType();
 }
