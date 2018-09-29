@@ -3,6 +3,7 @@ init(nextData, nextDivs, '.next');
 drawing(gameData, gameDivs);
 drawing(nextData, nextDivs);
 
+
 //初始化界面游戏数据
 function init(arr1, arr2, dom) {
   let wrap = query(dom);
@@ -35,6 +36,24 @@ function drawing(arr1, arr2) {
     }
   }
 }
+
+
+//通过渲染在页面的数据恢复游戏的基础布局数据
+function recoverData(arr1, arr2) {
+  for (let i = 0; i < arr1.length; i++) {
+    for (let j = 0; j < arr1[0].length; j++) {
+      if (arr2[i][j].className === 'none') {
+        arr1[i][j] = 0;
+      } else if (arr2[i][j].className === 'done') {
+        arr1[i][j] = 1;
+      } else if (arr2[i][j].className === 'current') {
+        arr1[i][j] = 2;
+
+      }
+    }
+  }
+}
+
 
 //把方块放入游戏区
 function gameMove(posiX, posiY) {

@@ -13,7 +13,7 @@ function bindEvent(obj, event, callback) {
     });
 }
 
-//生成一个范围的随机数
+//生成一个范围(0~x)的随机数
 function randomNum(num) {
     return Math.floor(Math.random() * num);
 }

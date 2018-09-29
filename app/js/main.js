@@ -15,15 +15,18 @@ function judgeRange(posiX, posiY, arr = nextData) {
 }
 
 //方块自由下落
-let downTimer = setInterval(() => {
-    if (!judgeRange(userOneX, userOneY)) {
-        gameMove(userOneX, userOneY++);
-    }
-    if (judgeRange(userOneX, userOneY)) {
-        console.log('下落完成');
-        downFinish();
-    }
-}, 1000)
+function beginGame() {
+    clearInterval(downTimer);
+    downTimer = setInterval(() => {
+        if (!judgeRange(userOneX, userOneY)) {
+            gameMove(userOneX, userOneY++);
+        }
+        if (judgeRange(userOneX, userOneY)) {
+            downFinish();
+        }
+    }, 800)
+}
+
 
 //下落完成,方块变色和刷新方块
 function downFinish() {
@@ -36,6 +39,7 @@ function downFinish() {
     }
     userOneX = randomNum(gameData[0].length);
     userOneY = 0;
+    judgeScore();
     createBlock.resetTypeIndex();
     createBlock.selectType();
 }

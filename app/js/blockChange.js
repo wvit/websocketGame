@@ -21,5 +21,4 @@ class CreateBlock {
     }
 }
 
-const createBlock = new CreateBlock()
-createBlock.selectType();
+const createBlock = new CreateBlock();

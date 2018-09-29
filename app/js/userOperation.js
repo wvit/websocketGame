@@ -13,3 +13,9 @@ bindEvent(document, 'keyup', ev => {
     gameMove(userOneX, userOneY);
   }
 })
+
+//游戏开始
+bindEvent(document, 'click', ev => {
+  createBlock.selectType();
+  beginGame();
+})
