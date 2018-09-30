@@ -15,7 +15,7 @@ bindEvent(document, 'keyup', ev => {
 })
 
 //游戏开始
-bindEvent(document, 'click', ev => {
+bindEvent(document, 'click', () => {
   createBlock.selectType();
   beginGame();
 })

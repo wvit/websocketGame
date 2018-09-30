@@ -7,17 +7,30 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>俄罗斯方块</title>
     <link rel="stylesheet" href="../css/main.css">
+    <script src="../server/socket.io.js"></script>
     <script src="../js/util.js"></script>
     <script src="../js/dataArrs.js"></script>
 </head>
 
 <body>
-    <div class="game"></div>
-    <div class="next"></div>
-    <div class="info">
-        <div>已用时:<span>0</span>s</div>
-        <div>已得分:<span>0</span>分</div>
-        <div>(请点击页面开始游戏)</div>
+
+    <div class="user-two">
+        <h2>对方的游戏区</h2>
+        <div class="game-two"></div>
+        <div class="next-two"></div>
+        <div class="info-two">
+            <div>已用时:<span>0</span>s</div>
+            <div>已得分:<span>0</span>分</div>
+        </div>
+    </div>
+    <div class="user-one">
+        <h2>我的游戏区(请点击页面开始游戏)</h2>
+        <div class="game"></div>
+        <div class="next"></div>
+        <div class="info">
+            <div>已用时:<span>0</span>s</div>
+            <div>已得分:<span>0</span>分</div>
+        </div>
     </div>
 </body>
 <script src="../js/main.js"></script>
@@ -25,5 +38,6 @@
 <script src="../js/blockChange.js"></script>
 <script src="../js/userOperation.js"></script>
 <script src="../js/scoring.js"></script>
+<script src="../js/online.js"></script>
 
 </html>
