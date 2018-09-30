@@ -1,9 +1,11 @@
 //渲染自己游戏页面
 init(gameData, gameDivs, '.game');
 init(nextData, nextDivs, '.next');
+
 //渲染对方游戏页面
 init(gameData, gameTwoDivs, '.game-two');
 init(nextData, nextTwoDivs, '.next-two');
+
 //初始化界面游戏数据
 function init(arr1, arr2, dom) {
   let wrap = query(dom);

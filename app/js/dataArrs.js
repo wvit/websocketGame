@@ -96,6 +96,7 @@ let gameData = [
 ];
 //添加空的一行
 const rowNull = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
 //游戏渲染数据
 let nextDivs = [];
 let gameDivs = [];
@@ -110,5 +111,6 @@ let userOneY = 0;
 
 //方块下落定时器
 let downTimer = null;
+
 //创建websocket连接
 const socket = io('ws://localhost:1999');
