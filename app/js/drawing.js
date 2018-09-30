@@ -1,8 +1,10 @@
+//渲染自己游戏页面
 init(gameData, gameDivs, '.game');
 init(nextData, nextDivs, '.next');
-drawing(gameData, gameDivs);
-drawing(nextData, nextDivs);
 
+//渲染对方游戏页面
+init(gameData, gameTwoDivs, '.game-two');
+init(nextData, nextTwoDivs, '.next-two');
 
 //初始化界面游戏数据
 function init(arr1, arr2, dom) {
@@ -48,7 +50,6 @@ function recoverData(arr1, arr2) {
         arr1[i][j] = 1;
       } else if (arr2[i][j].className === 'current') {
         arr1[i][j] = 2;
-
       }
     }
   }
@@ -71,6 +72,7 @@ function gameMove(posiX, posiY) {
 
 //刷新游戏区
 function clearGame() {
+  recoverData(gameData, gameDivs);
   for (let i = 0; i < gameDivs.length; i++) {
     for (let j = 0; j < gameDivs[0].length; j++) {
       if (gameDivs[i][j].className === 'current') {
@@ -78,6 +80,5 @@ function clearGame() {
       }
     }
   }
-  recoverData(gameData, gameDivs);
-  socket.emit('message', gameData);
+  socket.emit('message', [gameData, nextData]);
 }
