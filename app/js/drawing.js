@@ -6,8 +6,6 @@ init(nextData, nextDivs, '.next');
 init(gameData, gameTwoDivs, '.game-two');
 init(nextData, nextTwoDivs, '.next-two');
 
-
-drawing(gameData, gameDivs);
 //初始化界面游戏数据
 function init(arr1, arr2, dom) {
   let wrap = query(dom);

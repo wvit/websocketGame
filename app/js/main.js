@@ -23,8 +23,9 @@ function beginGame() {
         }
         if (judgeRange(userOneX, userOneY)) {
             downFinish();
+            clearInterval(downTimer);
         }
-    }, 800)
+    }, 200)
 }
 
 
