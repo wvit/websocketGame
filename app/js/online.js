@@ -10,7 +10,8 @@ socket.on('leave', msg => {
 
 //双方数据交互
 socket.on('message', data => {
-    console.log('收到数据')
-    drawing(data[0], gameTwoDivs);
-    drawing(data[1], nextTwoDivs);
+    drawing(data.gameData, gameTwoDivs);
+    drawing(data.nextData, nextTwoDivs);
+    userTwoScores.innerHTML = data.scores;
+    userTwoGameTime.innerHTML = data.gameTime;
 });

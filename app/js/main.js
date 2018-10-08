@@ -14,18 +14,24 @@ function judgeRange(posiX, posiY, arr = nextData) {
     }
 }
 
-//方块自由下落
+//方块自由下落和计时
 function beginGame() {
     clearInterval(downTimer);
+    clearInterval(gameTimer);
+    //右侧秒表计时
+    gameTimer = setInterval(() => {
+        gameTime.innerHTML++;
+    }, 1000)
+
+    //方块自由下落
     downTimer = setInterval(() => {
         if (!judgeRange(userOneX, userOneY)) {
             gameMove(userOneX, userOneY++);
         }
         if (judgeRange(userOneX, userOneY)) {
             downFinish();
-            clearInterval(downTimer);
         }
-    }, 200)
+    }, 800)
 }
 
 
@@ -44,3 +50,15 @@ function downFinish() {
     createBlock.resetTypeIndex();
     createBlock.selectType();
 }
+
+//页面加载执行的函数
+(() => {
+    //渲染自己游戏页面
+    init(gameData, gameDivs, '.game');
+    init(nextData, nextDivs, '.next');
+
+    //渲染对方游戏页面
+    init(gameData, gameTwoDivs, '.game-two');
+    init(nextData, nextTwoDivs, '.next-two');
+
+})()

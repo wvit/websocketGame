@@ -90,12 +90,23 @@ let gameData = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    [1, 1, 0, 0, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 0, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 0, 1, 1, 1, 1, 1, 1]
 ];
 //清除后添加空的一行
 const rowNull = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+//分数
+const scores = query('.scores');
+const userTwoScores = query('.user-two-scores');
+
+//游戏时间
+const gameTime = query('.game-time');
+const userTwoGameTime = query('.user-two-game-time');
+
+//创建websocket连接
+const socket = io('ws://localhost:1999');
 
 //游戏渲染数据
 let nextDivs = [];
@@ -112,5 +123,5 @@ let userOneY = 0;
 //方块下落定时器
 let downTimer = null;
 
-//创建websocket连接
-const socket = io('ws://localhost:1999');
+//右侧计时器
+let gameTimer = null;

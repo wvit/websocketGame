@@ -1,11 +1,13 @@
 //判定是否得分
 function judgeScore() {
+    let scoresNum = 0;
     for (let i = 0; i < gameDivs.length; i++) {
         if (!judgeRow(i)) {
             repaint(i)
-            // console.log(i)
+            scoresNum++
         }
     }
+    scores.innerHTML = Number(scores.innerHTML) + Math.pow(scoresNum, 2);
 }
 
 //判断哪行已经铺满

@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="../css/main.css">
     <script src="../server/socket.io.js"></script>
     <script src="../js/util.js"></script>
-    <script src="../js/dataArrs.js"></script>
 </head>
 
 <body>
@@ -19,8 +18,8 @@
         <div class="game-two"></div>
         <div class="next-two"></div>
         <div class="info-two">
-            <div>已用时:<span>0</span>s</div>
-            <div>已得分:<span>0</span>分</div>
+            <div>已用时:<span class="user-two-game-time">0</span>s</div>
+            <div>已得分:<span class="user-two-scores">0</span>分</div>
         </div>
     </div>
     <div class="user-one">
@@ -28,16 +27,17 @@
         <div class="game"></div>
         <div class="next"></div>
         <div class="info">
-            <div>已用时:<span>0</span>s</div>
-            <div>已得分:<span>0</span>分</div>
+            <div>已用时:<span class="game-time">0</span>s</div>
+            <div>已得分:<span class="scores">0</span>分</div>
         </div>
     </div>
 </body>
-<script src="../js/main.js"></script>
+<script src="../js/dataInit.js"></script>
 <script src="../js/drawing.js"></script>
 <script src="../js/blockChange.js"></script>
 <script src="../js/userOperation.js"></script>
 <script src="../js/scoring.js"></script>
 <script src="../js/online.js"></script>
+<script src="../js/main.js"></script>
 
 </html>
