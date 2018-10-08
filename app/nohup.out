@@ -1,0 +1,30 @@
+Starting up http-server, serving ./
+Available on:
+  http://192.168.0.106:8080
+  http://127.0.0.1:8080
+Hit CTRL-C to stop the server
+events.js:163
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: EPERM: operation not permitted, read
+Starting up http-server, serving ./
+Available on:
+  http://192.168.0.106:8080
+  http://127.0.0.1:8080
+Hit CTRL-C to stop the server
+events.js:163
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: EPERM: operation not permitted, read
+Starting up http-server, serving ./
+Available on:
+  http://192.168.0.106:8080
+  http://127.0.0.1:8080
+Hit CTRL-C to stop the server
+events.js:163
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: EPERM: operation not permitted, read
