@@ -106,7 +106,7 @@ const gameTime = query('.game-time');
 const userTwoGameTime = query('.user-two-game-time');
 
 //创建websocket连接
-const socket = io('ws://localhost:1999');
+const socket = io('ws://192.168.0.106:1999');
 
 //游戏渲染数据
 let nextDivs = [];
